@@ -1,0 +1,134 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details - MACE TRACE</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #d4e9d6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Georgia', serif;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .photo-upload {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .photo-upload label {
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px;
+            border: 2px dashed #ccc;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+        .photo-upload img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .photo-upload input {
+            display: none;
+        }
+        .links {
+            margin-top: 15px;
+        }
+        .links a {
+            color: #333;
+            text-decoration: none;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Details</h1>
+        <form id="studentForm" action="your_backend_script" method="post" enctype="multipart/form-data">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+
+            <label for="batch">Batch</label>
+            <input type="text" id="batch" name="batch" required placeholder="Enter your batch">
+
+            <div class="photo-upload">
+                <label for="photo">
+                    <img id="photo-preview" src="photo-icon.png" alt="Upload Profile Photo">
+                </label>
+                <input type="file" id="photo" name="photo" accept="image/*" onchange="previewImage(event)">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div class="links">
+            <!-- Updated the link to redirect to studortea.html with new text -->
+            <a href="studortea.html">Back to Create Account</a>
+        </div>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('photo-preview');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        // Redirect to hpage.html on form submission
+        document.getElementById('studentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            window.location.href = 'hpagestu.html';  
+        });
+    </script>
+</body>
+</html>
+
+

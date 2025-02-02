@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page - MACE TRACE</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #d4e9d6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            text-align: center;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+        h1 {
+            font-family: 'Georgia', serif;
+            color: #333;
+            text-align: center;
+        }
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <a href="#" onclick="showSection('home')">🏠 Home</a>
+        <a href="#" onclick="showSection('profile')">🖼️ Update Profile</a>
+        <a href="#" onclick="showSection('semester')">🎓 Update Semester</a>
+        <a href="#" onclick="showSection('account')">👤 Account</a>
+        <a href="#" onclick="showSection('search-teachers')">🔍 Search Teachers</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        
+        <!-- Home Section -->
+        <div id="home" class="section">
+            <h1>Welcome to MACE TRACE</h1>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.5500641074527!2d76.61675597442347!3d10.05393699005426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e6154a2133e5%3A0x2c26b2d532bb30ea!2sMar%20Athanasius%20College%20of%20Engineering%20Kothamangalam!5e0!3m2!1sen!2sin!4v1738460343247!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Update Profile Section -->
+        <div id="profile" class="section hidden">
+            <h1>Update Profile</h1>
+            <input type="file" id="profile-photo" accept="image/*" onchange="previewProfileImage(event)">
+            <img id="profile-preview" src="photo-icon.png" alt="Profile Preview" style="width: 100px; margin-top: 10px;">
+            <button onclick="saveProfilePhoto()">Save Profile Photo</button>
+        </div>
+
+        <!-- Update Semester Section -->
+        <div id="semester" class="section hidden">
+            <h1>Update Semester</h1>
+            <select id="semester-select">
+                <option value="1">1st Semester</option>
+                <option value="2">2nd Semester</option>
+                <option value="3">3rd Semester</option>
+                <option value="4">4th Semester</option>
+                <option value="5">5th Semester</option>
+                <option value="6">6th Semester</option>
+                <option value="7">7th Semester</option>
+                <option value="8">8th Semester</option>
+            </select>
+            <button onclick="updateSemester()">Update</button>
+        </div>
+
+        <!-- Account Section -->
+        <div id="account" class="section hidden">
+            <h1>Account</h1>
+            <p>Here you can manage your account settings.</p>
+        </div>
+
+        <!-- Search Teachers Section -->
+        <div id="search-teachers" class="section hidden">
+            <h1>Search Teachers</h1>
+            <input type="text" id="teacher-name" placeholder="Search by Teacher's Name">
+            <button onclick="searchTeacherByName()">Search by Name</button>
+            <input type="text" id="department" placeholder="Search by Department">
+            <button onclick="searchTeacherByDepartment()">Search by Department</button>
+        </div>
+
+    </div>
+
+    <script>
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+            // Show selected section
+            document.getElementById(section).classList.remove('hidden');
+        }
+
+        function previewProfileImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('profile-preview');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        function saveProfilePhoto() {
+            alert("Profile photo updated!");
+        }
+
+        function updateSemester() {
+            var semester = document.getElementById('semester-select').value;
+            alert("Semester updated to: " + semester);
+        }
+
+        function searchTeacherByName() {
+            var name = document.getElementById('teacher-name').value;
+            alert("Searching for teacher: " + name);
+            // Add actual search functionality here
+        }
+
+        function searchTeacherByDepartment() {
+            var dept = document.getElementById('department').value;
+            alert("Searching in department: " + dept);
+            // Add actual search functionality here
+        }
+    </script>
+
+</body>
+</html>
+

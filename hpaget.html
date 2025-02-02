@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Overview - MACE TRACE</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #d4e9d6;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-family: 'Georgia', serif;
+            color: #333;
+        }
+        .map-container {
+            width: 100%;
+            height: 450px;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Side Buttons Outside the Map */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .button {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+        }
+        .button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .button img {
+            width: 35px;
+            height: 35px;
+            filter: invert(1);
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            bottom: 70px;
+            background: #333;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .button:hover .tooltip {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to Mar Athanasius College of Engineering</h1>
+        <p>
+            Mar Athanasius College of Engineering (MACE), Kothamangalam, is one of the most prestigious engineering institutions in India. 
+            Established in 1961, it has a rich history of academic excellence, research, and innovation.
+        </p>
+
+        <!-- Google Map Embed -->
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.5500641074527!2d76.61675597442347!3d10.05393699005426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e6154a2133e5%3A0x2c26b2d532bb30ea!2sMar%20Athanasius%20College%20of%20Engineering%20Kothamangalam!5e0!3m2!1sen!2sin!4v1738460343247!5m2!1sen!2sin" 
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <!-- Side Buttons (Placed Outside the Map) -->
+        <div class="button-container">
+            <!-- Profile -->
+            <div class="button" onclick="goProfile()">
+                <img src="profile-icon.png" alt="Profile">
+                <span class="tooltip">Profile</span>
+            </div>
+
+            <!-- Teacher Availability -->
+            <div class="button" onclick="toggleAvailability()">
+                <img id="availability-icon" src="online-icon.png" alt="Availability">
+                <span class="tooltip" id="availability-tooltip">Teacher Available</span>
+            </div>
+
+            <!-- Turn On Live Location -->
+            <div class="button" onclick="turnOnLiveLocation()">
+                <img src="location-icon.png" alt="Live Location">
+                <span class="tooltip">Turn On Live Location</span>
+            </div>
+
+            <!-- Profile Viewers -->
+            <div class="button" onclick="showViewers()">
+                <img src="eye-icon.png" alt="Viewers">
+                <span class="tooltip">View Profile Viewers</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let teacherAvailable = true;
+
+        function toggleAvailability() {
+            teacherAvailable = !teacherAvailable;
+            let icon = document.getElementById("availability-icon");
+            let tooltip = document.getElementById("availability-tooltip");
+
+            if (teacherAvailable) {
+                icon.src = "online-icon.png";
+                tooltip.innerText = "Teacher Available";
+            } else {
+                icon.src = "offline-icon.png";
+                tooltip.innerText = "Teacher Not Available";
+            }
+        }
+
+        function turnOnLiveLocation() {
+            alert("Live location turned on!");
+            // Add actual functionality here
+        }
+
+        function showViewers() {
+            alert("Feature coming soon: View the list of people who viewed the profile.");
+        }
+
+        function goProfile() {
+            window.location.href = "studet.html"; 
+        }
+    </script>
+
+</body>
+</html>
+
+
+

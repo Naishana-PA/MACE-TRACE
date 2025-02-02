@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MACE TRACE - User Type Selection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #d4e9d6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .selection-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Georgia', serif;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+        }
+        .radio-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .radio-group input {
+            margin-right: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="selection-container">
+        <h1>Select Your Role</h1>
+        <form id="userSelectionForm" method="post">
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="userType" value="student" required>
+                    Student
+                </label>
+                <label>
+                    <input type="radio" name="userType" value="teacher" required>
+                    Teacher
+                </label>
+            </div>
+            <button type="submit">Proceed</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('userSelectionForm').addEventListener('submit', function(event) {
+            const userType = document.querySelector('input[name="userType"]:checked').value;
+            if (userType === 'student') {
+                event.preventDefault();
+                window.location.href = 'studet.html';
+            } else if (userType === 'teacher') {
+                event.preventDefault();
+                window.location.href = 'teadet.html';
+            }
+        });
+    </script>
+</body>
+</html>
+
